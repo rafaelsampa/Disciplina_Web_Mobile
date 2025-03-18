@@ -16,7 +16,7 @@
 ```
 
 
-### Exercicio 2 - Minha Rotina
+### Exercicio 2 - Minha Rotina HTML
 
 ```
 Crie um site com a sua rotina utilizando como base os exercícios das páginas 28, 37, 48, 61, 66 e 68 do PDF: construcao-de-sites-1.12.pdf
@@ -31,7 +31,16 @@ Entrega deve ser realizada anexando:
 - Link para o seu site publicado (vercel, surge, netlify, etc.)
 
 Observação da Entrega: utilize a estrutura do repositório https://github.com/marciobueno1/pwm-2025-1 onde você utilizará esse mesmo repositório para todas as suas entregas de exercícios desta disciplina. Coloque um index.html apontando para cada pasta de exercícios, de dentro de cada pasta de exercício crie todos os arquivos necessários para a realização da tarefa solicitada.
-````
+```
+
+### Exercicio 3 - Minha Rotina HTML + CSS
+
+
+```
+Crie
+
+```
+
 _________
 
 ## Link do post: [disciplina-web-mobile.vercel.app](disciplina-web-mobile.vercel.app)
