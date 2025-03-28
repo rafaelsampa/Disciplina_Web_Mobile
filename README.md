@@ -37,9 +37,31 @@ Observação da Entrega: utilize a estrutura do repositório https://github.com/
 
 
 ```
-Crie
+VAZIO
 
 ```
+### Currículo / Portifólio 
+
+```
+Crie um site utilizando HTML / CSS / JS puro, ou React que seja o currículo / portfólio.
+
+Capriche no CSS e utilize JS para dar dinamicidade ao seu site e/ou integração com APIs.
+
+Você deve criar uma página extra no seu currículo / portfólio para
+demonstrar seu conhecimento de JS que é a implementação do Jogo Senha
+(https://en.wikipedia.org/wiki/Bulls_and_Cows)
+Você deve exibir uma lista com todas as tentativas anteriores e o resultado
+de cada uma delas. A lista deve ficar em ordem reversa, para que a última
+tentativa fique mais próxima do input de digitação. Você deve colocar um
+botão que exiba um Alert com a combinação aleatória escolhida pelo site).
+
+Anexar:
+- link com seu código no github
+- link para o seu site publicado
+- vídeo de até 60 segundos mostrando o seu site (inclusive o jogo da senha)
+
+```
+
 
 _________
 
