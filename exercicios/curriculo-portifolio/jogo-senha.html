@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Senha - Rafael</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Jogo da Senha</h1>
+            <div class="social-icons">
+                <a href="jogo-senha.html"><i class="fas fa-gamepad"></i></a>
+                <a href="https://github.com/seu-github" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/seu-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="curriculo.html">Projetos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="game-section">
+            <div class="game-container">
+                <h2>Jogo da Senha</h2>
+                <p class="game-instructions">
+                    Tente adivinhar a senha de 4 dígitos! Cada tentativa mostrará quantos números estão corretos 
+                    e quantos estão na posição correta.
+                </p>
+                <div class="game-input">
+                    <input type="number" id="guess" min="0" max="9999" placeholder="Digite sua tentativa">
+                    <button onclick="checkGuess()">Tentar</button>
+                </div>
+                <div class="game-history" id="history">
+                    <!-- Histórico de tentativas será mostrado aqui -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Gera uma senha aleatória de 4 dígitos
+        const password = Math.floor(1000 + Math.random() * 9000);
+        let attempts = 0;
+        const maxAttempts = 10;
+
+        function checkGuess() {
+            const guessInput = document.getElementById('guess');
+            const guess = parseInt(guessInput.value);
+            const history = document.getElementById('history');
+
+            if (isNaN(guess) || guess < 1000 || guess > 9999) {
+                alert('Por favor, digite um número de 4 dígitos!');
+                return;
+            }
+
+            attempts++;
+
+            if (guess === password) {
+                history.innerHTML += `<p class="success">Parabéns! Você acertou a senha em ${attempts} tentativas!</p>`;
+                disableGame();
+            } else {
+                const correctNumbers = countCorrectNumbers(guess);
+                const correctPositions = countCorrectPositions(guess);
+                
+                history.innerHTML += `<p>Tentativa ${attempts}: ${guess} - ${correctNumbers} números corretos, ${correctPositions} na posição correta</p>`;
+                
+                if (attempts >= maxAttempts) {
+                    history.innerHTML += `<p class="failure">Game Over! A senha era ${password}</p>`;
+                    disableGame();
+                }
+            }
+
+            guessInput.value = '';
+        }
+
+        function countCorrectNumbers(guess) {
+            const guessStr = guess.toString();
+            const passwordStr = password.toString();
+            let count = 0;
+
+            for (let i = 0; i < 4; i++) {
+                if (passwordStr.includes(guessStr[i])) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        function countCorrectPositions(guess) {
+            const guessStr = guess.toString();
+            const passwordStr = password.toString();
+            let count = 0;
+
+            for (let i = 0; i < 4; i++) {
+                if (guessStr[i] === passwordStr[i]) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        function disableGame() {
+            document.getElementById('guess').disabled = true;
+            document.querySelector('.game-input button').disabled = true;
+        }
+    </script>
+</body>
+</html> 
