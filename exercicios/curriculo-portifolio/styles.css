@@ -13,7 +13,7 @@ body {
 
 header {
     background-color: #2c3e50;
-    padding: 1rem;
+    padding: 0.7rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -27,19 +27,21 @@ header {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #fff;
 }
 
 .social-icons {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .social-icons a {
     color: #fff;
     font-size: 1.5rem;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .social-icons a:hover {
@@ -47,9 +49,21 @@ h1 {
     transform: scale(1.1);
 }
 
+.game-link {
+    font-size: 1rem !important;
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    background-color: #3498db;
+}
+
+.game-link:hover {
+    background-color: #2980b9;
+}
+
 nav {
     max-width: 1200px;
-    margin: 1rem auto;
+    margin: 0.7rem auto;
     padding: 0 1rem;
 }
 
