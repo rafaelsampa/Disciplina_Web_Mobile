@@ -31,11 +31,15 @@
                 <h2>Jogo da Senha</h2>
                 <p class="game-instructions">
                     Tente adivinhar a senha de 4 dígitos! Cada tentativa mostrará quantos números estão corretos 
-                    e quantos estão na posição correta.
+                    e quantos estão na posição correta. Você tem 10 tentativas para acertar.
                 </p>
                 <div class="game-input">
                     <input type="number" id="guess" min="0" max="9999" placeholder="Digite sua tentativa">
-                    <button onclick="checkGuess()">Tentar</button>
+                    <button onclick="checkGuess()" id="try-button">Tentar</button>
+                    <button onclick="resetGame()" id="reset-button" class="reset-button">Desistir</button>
+                </div>
+                <div class="game-stats">
+                    <p>Tentativas restantes: <span id="attempts-left">10</span></p>
                 </div>
                 <div class="game-history" id="history">
                     <!-- Histórico de tentativas será mostrado aqui -->
@@ -46,21 +50,33 @@
 
     <script>
         // Gera uma senha aleatória de 4 dígitos
-        const password = Math.floor(1000 + Math.random() * 9000);
+        let password = Math.floor(1000 + Math.random() * 9000);
         let attempts = 0;
         const maxAttempts = 10;
+        let previousGuesses = [];
 
         function checkGuess() {
             const guessInput = document.getElementById('guess');
             const guess = parseInt(guessInput.value);
             const history = document.getElementById('history');
+            const attemptsLeft = document.getElementById('attempts-left');
 
             if (isNaN(guess) || guess < 1000 || guess > 9999) {
                 alert('Por favor, digite um número de 4 dígitos!');
                 return;
             }
 
+            // Verifica se a tentativa é duplicada
+            if (previousGuesses.includes(guess)) {
+                alert('Você já tentou esse número! Tente outro.');
+                return;
+            }
+
+            // Adiciona a tentativa atual à lista de tentativas anteriores
+            previousGuesses.push(guess);
+
             attempts++;
+            attemptsLeft.textContent = maxAttempts - attempts;
 
             if (guess === password) {
                 history.innerHTML += `<p class="success">Parabéns! Você acertou a senha em ${attempts} tentativas!</p>`;
@@ -110,7 +126,32 @@
 
         function disableGame() {
             document.getElementById('guess').disabled = true;
-            document.querySelector('.game-input button').disabled = true;
+            document.getElementById('try-button').disabled = true;
+        }
+
+        function resetGame() {
+            // Gera uma nova senha
+            password = Math.floor(1000 + Math.random() * 9000);
+            
+            // Reseta as variáveis
+            attempts = 0;
+            previousGuesses = [];
+            
+            // Limpa o histórico
+            document.getElementById('history').innerHTML = '';
+            
+            // Reseta o contador de tentativas
+            document.getElementById('attempts-left').textContent = maxAttempts;
+            
+            // Habilita os controles
+            document.getElementById('guess').disabled = false;
+            document.getElementById('try-button').disabled = false;
+            
+            // Limpa o campo de entrada
+            document.getElementById('guess').value = '';
+            
+            // Adiciona mensagem de reset
+            document.getElementById('history').innerHTML = '<p class="info">Jogo reiniciado! Tente adivinhar a nova senha.</p>';
         }
     </script>
 </body>

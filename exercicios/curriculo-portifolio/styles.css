@@ -209,7 +209,7 @@ nav a:hover {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .game-input input {
@@ -235,6 +235,21 @@ nav a:hover {
     background-color: #2980b9;
 }
 
+.reset-button {
+    background-color: #e74c3c !important;
+}
+
+.reset-button:hover {
+    background-color: #c0392b !important;
+}
+
+.game-stats {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-weight: bold;
+}
+
 .game-history {
     max-height: 300px;
     overflow-y: auto;
@@ -256,5 +271,10 @@ nav a:hover {
 
 .game-history .failure {
     color: #e74c3c;
+    font-weight: bold;
+}
+
+.game-history .info {
+    color: #3498db;
     font-weight: bold;
 } 
