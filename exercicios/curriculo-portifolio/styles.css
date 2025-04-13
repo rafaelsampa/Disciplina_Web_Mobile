@@ -47,6 +47,12 @@ h1 {
     color: #3498db;
 }
 
+.icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
 .game-link {
     font-size: 1rem !important;
     font-weight: bold;
