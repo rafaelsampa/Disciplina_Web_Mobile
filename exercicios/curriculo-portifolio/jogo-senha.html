@@ -6,6 +6,18 @@
     <title>Jogo da Senha</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        @keyframes brilho {
+            0% { color: #333; }
+            50% { color: #f1c40f; text-shadow: 0 0 10px #f39c12; }
+            100% { color: #333; }
+        }
+        
+        .numero-brilhante {
+            animation: brilho 1s infinite;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -51,6 +63,7 @@
                 <div class="game-history" id="history">
                     <!-- Histórico de tentativas será mostrado aqui -->
                 </div>
+                <div id="senha-revelada" class="senha-revelada"></div>
             </div>
         </section>
     </main>
@@ -88,6 +101,7 @@
             if (guess === password) {
                 history.innerHTML += `<p class="success">Parabéns! Você acertou a senha em ${attempts} tentativas!</p>`;
                 disableGame();
+                revelarSenhaComAnimacao();
             } else {
                 const correctNumbers = countCorrectNumbers(guess);
                 const correctPositions = countCorrectPositions(guess);
@@ -97,6 +111,7 @@
                 if (attempts >= maxAttempts) {
                     history.innerHTML += `<p class="failure">Game Over! A senha era ${password}</p>`;
                     disableGame();
+                    revelarSenhaComAnimacao();
                 }
             }
 
@@ -157,8 +172,37 @@
             // Limpa o campo de entrada
             document.getElementById('guess').value = '';
             
+            // Limpa a senha revelada
+            document.getElementById('senha-revelada').innerHTML = '';
+            
             // Adiciona mensagem de reset
             document.getElementById('history').innerHTML = '<p class="info">Jogo reiniciado! Tente adivinhar a nova senha.</p>';
+        }
+
+        function revelarSenhaComAnimacao() {
+            const senhaRevelada = document.getElementById('senha-revelada');
+            const senhaStr = password.toString();
+            
+            // Limpa o conteúdo anterior
+            senhaRevelada.innerHTML = '';
+            
+            // Cria um elemento para cada dígito da senha
+            for (let i = 0; i < senhaStr.length; i++) {
+                const digito = document.createElement('span');
+                digito.textContent = senhaStr[i];
+                digito.className = 'numero-brilhante';
+                digito.style.animationDelay = `${i * 0.2}s`; // Adiciona um atraso para cada dígito
+                senhaRevelada.appendChild(digito);
+            }
+            
+            // Adiciona um título
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Senha:';
+            titulo.style.textAlign = 'center';
+            titulo.style.marginBottom = '10px';
+            
+            // Insere o título antes dos dígitos
+            senhaRevelada.insertBefore(titulo, senhaRevelada.firstChild);
         }
     </script>
 </body>

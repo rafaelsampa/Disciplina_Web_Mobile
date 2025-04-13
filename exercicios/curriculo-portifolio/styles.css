@@ -287,6 +287,24 @@ nav a:hover {
     font-weight: bold;
 }
 
+.senha-revelada {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.senha-revelada span {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
