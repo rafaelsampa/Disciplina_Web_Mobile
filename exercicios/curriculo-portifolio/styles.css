@@ -40,13 +40,11 @@ h1 {
 .social-icons a {
     color: #fff;
     font-size: 1.5rem;
-    transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .social-icons a:hover {
     color: #3498db;
-    transform: scale(1.1);
 }
 
 .game-link {
@@ -77,7 +75,6 @@ nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 nav a:hover {
@@ -133,11 +130,6 @@ nav a:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
 }
 
 .project-image {
@@ -228,7 +220,6 @@ nav a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .game-input button:hover {
